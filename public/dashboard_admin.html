@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEU Library – Admin Dashboard</title>
+    <link rel="stylesheet" href="dashboard_admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ── HEADER ── -->
+    <header class="page-header">
+        <div class="page-header-inner">
+
+            <div class="header-logo">
+                <img src="neu-seal.png" alt="NEU Seal" class="header-seal">
+                <span class="header-title">NEU Library System</span>
+                <span class="header-badge">Admin</span>
+            </div>
+
+            <div class="header-profile" id="headerProfile">
+                <div class="profile-info">
+                    <span class="profile-name" id="headerName">Admin User</span>
+                    <span class="profile-role">Administrator</span>
+                </div>
+                <div class="profile-avatar" id="headerAvatar">AU</div>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <div class="dropdown-user">
+                        <div class="dropdown-avatar" id="dropAvatar">AU</div>
+                        <div>
+                            <div class="dropdown-name" id="dropName">Admin User</div>
+                            <div class="dropdown-email" id="dropEmail"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="93f2f7fefafdd3fdf6e6bdf6f7e6bde3fb">[email&#160;protected]</a></div>
+                        </div>
+                    </div>
+                    <hr class="dropdown-divider">
+                    <button class="dropdown-item" id="switchVisitorBtn">👤 &nbsp;Switch to Visitor</button>
+                    <button class="dropdown-item" id="signOutBtn">🚪 &nbsp;Sign Out</button>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- ── MAIN ── -->
+    <main class="page-main">
+
+        <!-- ── STAT CARDS ── -->
+        <div class="stats-row">
+            <div class="stat-card">
+                <span class="stat-icon">👥</span>
+                <div class="stat-info">
+                    <span class="stat-num" id="statTotal">0</span>
+                    <span class="stat-label">Total Visits Today</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">📖</span>
+                <div class="stat-info">
+                    <span class="stat-num" id="statReading">0</span>
+                    <span class="stat-label">Reading Books</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">🔬</span>
+                <div class="stat-info">
+                    <span class="stat-num" id="statResearch">0</span>
+                    <span class="stat-label">Research / Thesis</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">💻</span>
+                <div class="stat-info">
+                    <span class="stat-num" id="statComputer">0</span>
+                    <span class="stat-label">Use of Computer</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">📝</span>
+                <div class="stat-info">
+                    <span class="stat-num" id="statAssignment">0</span>
+                    <span class="stat-label">Doing Assignments</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── LOG TABLE ── -->
+        <div class="table-card">
+
+            <div class="table-header">
+                <div class="table-title">
+                    <span class="table-title-icon">📋</span>
+                    <div>
+                        <h2>Visitor Log</h2>
+                        <p class="table-subtitle">Real-time record of all library visits</p>
+                    </div>
+                </div>
+                <div class="table-actions">
+                    <div class="search-wrapper">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="searchInput" class="search-input" placeholder="Search visitor...">
+                    </div>
+                    <select id="filterPurpose" class="filter-select">
+                        <option value="">All Purposes</option>
+                        <option value="Reading Books">Reading Books</option>
+                        <option value="Research / Thesis">Research / Thesis</option>
+                        <option value="Use of Computer">Use of Computer</option>
+                        <option value="Doing Assignments">Doing Assignments</option>
+                    </select>
+                    <button class="clear-btn" id="clearLogsBtn">🗑 Clear Logs</button>
+                </div>
+            </div>
+
+            <div class="table-scroll">
+                <table class="log-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>College / Office</th>
+                            <th>Program</th>
+                            <th>Role</th>
+                            <th>Purpose</th>
+                            <th>Date & Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="logTableBody">
+                        <!-- Rows injected by JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState">
+                <span class="empty-icon">📭</span>
+                <p class="empty-title">No visits logged yet</p>
+                <p class="empty-sub">Visitor logs will appear here once someone submits a purpose of visit.</p>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination-bar" id="paginationBar">
+                <span class="pagination-info" id="paginationInfo">Showing 1–10 of 0</span>
+                <div class="pagination-btns">
+                    <button class="page-btn" id="prevBtn" disabled>&#8592; Prev</button>
+                    <button class="page-btn" id="nextBtn" disabled>Next &#8594;</button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top-btn" id="scrollTopBtn" title="Back to top">&#8679;</button>
+
+    <!-- ── FOOTER ── -->
+    <footer class="page-footer">
+        <div class="page-footer-inner">
+            <div class="footer-logo">
+                <img src="neu-seal.png" alt="NEU Seal" class="footer-seal">
+                <span>NEU Library System</span>
+            </div>
+            <div class="footer-copy">
+                <p>© 2026 New Era University Library. All rights reserved.</p>
+                <p class="footer-sub">Digital Library Management System</p>            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase Compat SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="firebase.js"></script>
+    <script src="dashboard_admin.js"></script>
+</body>
+</html>

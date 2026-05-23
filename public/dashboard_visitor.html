@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEU Library – Visitor Log</title>
+    <link rel="stylesheet" href="dashboard_visitor.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ── HEADER ── -->
+    <header class="page-header">
+        <div class="page-header-inner">
+
+            <!-- Left: Logo -->
+            <div class="header-logo">
+                <img src="neu-seal.png" alt="NEU Seal" class="header-seal">
+                <span class="header-title">NEU Library System</span>
+            </div>
+
+            <!-- Right: Profile -->
+            <div class="header-profile" id="headerProfile">
+                <div class="profile-info">
+                    <span class="profile-name" id="headerName">Juan Dela Cruz</span>
+                    <span class="profile-college" id="headerCollege">CICS – BSIT</span>
+                </div>
+                <div class="profile-avatar" id="headerAvatar">JD</div>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <div class="dropdown-user">
+                        <div class="dropdown-avatar" id="dropAvatar">JD</div>
+                        <div>
+                            <div class="dropdown-name" id="dropName">Juan Dela Cruz</div>
+                            <div class="dropdown-email" id="dropEmail"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f59f919099949687808fb59b9080db909180db859d">[email&#160;protected]</a></div>
+                        </div>
+                    </div>
+                    <hr class="dropdown-divider">
+                    <button class="dropdown-item" id="signOutBtn">🚪 &nbsp;Sign Out</button>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- ── MAIN ── -->
+    <main class="page-main">
+        <div class="dashboard-card">
+
+            <!-- ── WELCOME BANNER ── -->
+            <div class="welcome-banner">
+                <div class="welcome-left">
+                    <div class="welcome-avatar" id="bannerAvatar">JD</div>
+                    <div class="welcome-greeting">
+                        <span class="welcome-label">Welcome back,</span>
+                        <span class="welcome-name" id="bannerName">Juan Dela Cruz</span>
+                    </div>
+                </div>
+                <div class="welcome-time" id="bannerTime">–</div>
+            </div>
+
+            <!-- ── INFO STRIP ── -->
+            <div class="info-strip">
+                <div class="info-item">
+                    <span class="info-icon">🏫</span>
+                    <div>
+                        <span class="info-label">College / Office</span>
+                        <span class="info-val" id="infoCollege">College of Informatics and Computing Studies</span>
+                    </div>
+                </div>
+                <div class="info-divider" id="programDivider"></div>
+                <div class="info-item" id="programInfoItem">
+                    <span class="info-icon">🎓</span>
+                    <div>
+                        <span class="info-label">Program</span>
+                        <span class="info-val" id="infoProgram">BSIT – BS Information Technology</span>
+                    </div>
+                </div>
+                <div class="info-divider"></div>
+                <div class="info-item">
+                    <span class="info-icon">🪪</span>
+                    <div>
+                        <span class="info-label">Role</span>
+                        <span class="info-val" id="infoRole">Student</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── PURPOSE SECTION ── -->
+            <div class="section-divider">
+                <span>Select Purpose of Visit</span>
+            </div>
+
+            <div class="purpose-grid" id="purposeGrid">
+
+                <button class="purpose-card" data-purpose="Reading Books">
+                    <span class="purpose-icon">📖</span>
+                    <span class="purpose-title">Reading Books</span>
+                    <span class="purpose-desc">Browse and read library collections</span>
+                </button>
+
+                <button class="purpose-card" data-purpose="Research / Thesis">
+                    <span class="purpose-icon">🔬</span>
+                    <span class="purpose-title">Research / Thesis</span>
+                    <span class="purpose-desc">Academic research and thesis work</span>
+                </button>
+
+                <button class="purpose-card" data-purpose="Use of Computer">
+                    <span class="purpose-icon">💻</span>
+                    <span class="purpose-title">Use of Computer</span>
+                    <span class="purpose-desc">Access library computer workstations</span>
+                </button>
+
+                <button class="purpose-card" data-purpose="Doing Assignments">
+                    <span class="purpose-icon">📝</span>
+                    <span class="purpose-title">Doing Assignments</span>
+                    <span class="purpose-desc">Study area for schoolwork</span>
+                </button>
+
+            </div>
+
+            <!-- ── PURPOSE HINT ── -->
+            <p class="purpose-hint">You can select multiple purposes — tap to toggle</p>
+
+            <!-- ── STATUS ── -->
+            <p class="status-msg" id="statusMsg"></p>
+
+            <!-- ── LOG VISIT BUTTON ── -->
+            <button class="log-btn" id="logVisitBtn" disabled>
+                <span class="log-btn-icon">✅</span>
+                <span id="logBtnText">Select a Purpose to Log Visit</span>
+            </button>
+
+        </div>
+    </main>
+
+    <!-- ── FOOTER ── -->
+    <footer class="page-footer">
+        <div class="page-footer-inner">
+            <div class="footer-logo">
+                <img src="neu-seal.png" alt="NEU Seal" class="footer-seal">
+                <span>NEU Library System</span>
+            </div>
+            <div class="footer-copy">
+                <p>© 2026 New Era University Library. All rights reserved.</p>
+                <p class="footer-sub">Digital Library Management System</</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase Compat SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="firebase.js"></script>
+    <script src="dashboard_visitor.js"></script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEU Library - Create Account</title>
+    <link rel="stylesheet" href="register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-inner">
+            <div class="page-header-logo">
+                <img src="neu-seal.png" alt="NEU Seal" class="page-header-seal"
+                     onerror="this.src='https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/New_Era_University_seal.svg/150px-New_Era_University_seal.svg.png'">
+                <span class="page-header-title">NEU Library System</span>
+            </div>
+            <a href="index.html" class="page-header-signin">Sign In</a>
+        </div>
+    </header>
+
+    <!-- Page Wrapper -->
+    <main class="page-main">
+    <div class="register-card">
+
+        <!-- Header -->
+        <div class="card-header">
+            <img src="neu-seal.png" alt="NEU Seal" class="card-seal">
+            <h1>Create Your <span class="highlight">Member</span> Account</h1>
+            <p class="card-subtitle">Join NEU Library today</p>
+        </div>
+
+        <!-- Form -->
+        <form id="registerForm" novalidate>
+            <div class="form-columns">
+
+                <!-- LEFT: Personal Details -->
+                <div class="col-left">
+                    <div class="col-section-label">
+                        <span>👤</span> Personal Details
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label">Full Name <span class="req">*</span></label>
+                        <input type="text" id="fullName" class="field-input" placeholder="Last Name, First Name" autocomplete="off">
+                        <span class="field-error" id="fullNameError"></span>
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label">Role <span class="req">*</span></label>
+                        <div class="select-wrapper">
+                            <select id="roleSelect" class="field-select">
+                                <option value="">Select Role</option>
+                                <option value="student">Student</option>
+                                <option value="faculty">Faculty</option>
+                                <option value="employee">Employee</option>
+                            </select>
+                            <span class="select-arrow">▾</span>
+                        </div>
+                        <span class="field-error" id="roleError"></span>
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label">ID Number <span class="req">*</span></label>
+                        <input type="text" id="idNumber" class="field-input" placeholder="e.g. 12-34567-890" autocomplete="off">
+                        <span class="field-error" id="idNumberError"></span>
+                    </div>
+
+                    <!-- Student only: Year Level -->
+                    <div class="field-group" id="yearLevelGroup">
+                        <label class="field-label">Year Level</label>
+                        <div class="select-wrapper">
+                            <select id="yearLevel" class="field-select">
+                                <option value="na">N/A</option>
+                                <option value="1">1st Year</option>
+                                <option value="2">2nd Year</option>
+                                <option value="3">3rd Year</option>
+                                <option value="4">4th Year</option>
+                            </select>
+                            <span class="select-arrow">▾</span>
+                        </div>
+                    </div>
+
+                    <!-- Faculty / Employee only: Position -->
+                    <div class="field-group hidden" id="positionGroup">
+                        <label class="field-label">Position / Designation</label>
+                        <input type="text" id="positionInput" class="field-input" placeholder="e.g. Professor, Staff Officer" autocomplete="off">
+                    </div>
+
+                </div>
+
+                <!-- RIGHT: Academic Details -->
+                <div class="col-right">
+                    <div class="col-section-label">
+                        <span>🎓</span> Academic Details
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label">Department <span class="req">*</span></label>
+                        <div class="select-wrapper">
+                            <select id="departmentSelect" class="field-select">
+                                <option value="">Select Department...</option>
+                                <optgroup label="Graduate & Special">
+                                    <option value="sgs">School of Graduate Studies</option>
+                                </optgroup>
+                                <optgroup label="Undergraduate Colleges">
+                                    <option value="coa">College of Accountancy</option>
+                                    <option value="cag">College of Agriculture</option>
+                                    <option value="cas">College of Arts and Sciences</option>
+                                    <option value="cba">College of Business Administration</option>
+                                    <option value="ccom">College of Communication</option>
+                                    <option value="cics">College of Informatics and Computing Studies</option>
+                                    <option value="ccrim">College of Criminology</option>
+                                    <option value="ced">College of Education</option>
+                                    <option value="cea">College of Engineering and Architecture</option>
+                                    <option value="cmt">College of Medical Technology</option>
+                                    <option value="con">College of Nursing</option>
+                                </optgroup>
+                            </select>
+                            <span class="select-arrow">▾</span>
+                        </div>
+                        <span class="field-error" id="departmentError"></span>
+                    </div>
+
+                    <div class="field-group" id="courseProgramGroup">
+                        <label class="field-label">Course / Program</label>
+                        <div class="select-wrapper">
+                            <select id="courseSelect" class="field-select" disabled>
+                                <option value="">Select Department First</option>
+                            </select>
+                            <span class="select-arrow">▾</span>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label">Email Address <span class="req">*</span></label>
+                        <input type="email" id="emailAddress" class="field-input" placeholder="name@neu.edu.ph" autocomplete="off">
+                        <span class="field-error" id="emailError"></span>
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label">Password <span class="req">*</span></label>
+                        <div class="password-wrapper">
+                            <input type="password" id="passwordField" class="field-input password-input" placeholder="••••••••">
+                            <button type="button" id="togglePwd" class="pwd-toggle" tabindex="-1">
+                                <span id="eyeIcon">👁️</span>
+                            </button>
+                        </div>
+                        <span class="password-hint">Minimum 8 characters required</span>
+                        <span class="field-error" id="passwordError"></span>
+                    </div>
+                </div>
+
+            </div><!-- /form-columns -->
+
+            <!-- Status -->
+            <p id="formStatus" class="form-status"></p>
+
+            <!-- Submit -->
+            <button type="submit" id="createAccountBtn" class="create-btn">
+                <span>👤</span> Create Account
+            </button>
+
+            <!-- Sign In -->
+            <p class="signin-link">
+                Already have an account?
+                <a href="index.html" class="signin-anchor">Sign in here</a>
+            </p>
+        </form>
+
+        <!-- Footer -->
+        <div class="card-footer">
+            <p>© 2026 New Era University. All rights reserved.</p>
+        </div>
+
+    </div>
+    </main>
+
+    <!-- Page Footer -->
+    <footer class="page-footer">
+        <div class="page-footer-inner">
+            <div class="page-footer-logo">
+                <img src="neu-seal.png" alt="NEU Seal" class="page-footer-seal"
+                     onerror="this.src='https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/New_Era_University_seal.svg/150px-New_Era_University_seal.svg.png'">
+                <span>NEU Library System</span>
+            </div>
+            <div class="page-footer-copy">
+                <p>© 2026 New Era University Library. All rights reserved.</p>
+                <p class="page-footer-sub">Digital Library Management System</p>
+            </div>
+        </div>
+    </footer>
+        <!-- Firebase Compat SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="firebase.js"></script>
+    <script src="register.js"></script>
+</body>
+</html>

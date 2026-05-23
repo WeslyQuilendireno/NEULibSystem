@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEU Library Visitor Log</title>
+    <link rel="stylesheet" href="loginpage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Perfectly Centered Container -->
+    <div class="login-container">
+        <div class="login-card">
+            <!-- Logo Section -->
+            <div class="logo-section">
+                <h1>NEU Library</h1>
+                <p>Visitor Log System</p>
+            </div>
+            
+            <!-- Role Toggle (Top) -->
+            <div class="role-toggle-section">
+                <div class="role-toggle" id="roleToggle">
+                    <button class="toggle-btn visitor-toggle active" data-role="visitor">
+                        <span class="toggle-icon">👤</span>
+                        Visitor
+                    </button>
+                    <button class="toggle-btn admin-toggle" data-role="admin">
+                        <span class="toggle-icon">👨‍💼</span>
+                        Admin
+                    </button>
+                    <div class="toggle-slider"></div>
+                
+                </div>
+            </div>
+
+            <!-- Main Login Form -->
+            <div class="login-form">
+                <div class="form-header">
+                    <h2 id="formTitle">Welcome Visitor!</h2>
+                    <p id="formSubtitle">Quick sign in for library visits</p>
+                </div>
+                
+                <!-- Google Login -->
+                <div class="google-login-btn" id="googleLoginBtn">
+                    <img src="https://developers.google.com/identity/images/g-logo.png" 
+                         alt="Google" class="google-icon">
+                    <div class="btn-text">
+                        <span id="googleBtnText">Sign in with Google</span>
+                        <small>(exclusive for @neu.edu.ph)</small>
+                    </div>
+                </div>
+                
+                <!-- Divider -->
+                <div class="divider">
+                    <span>or</span>
+                </div>
+                
+                <!-- Email + Password Login -->
+                <div class="email-password-section">
+                    <!-- Email Input -->
+                    <div class="input-wrapper">
+                        <span class="input-icon">📧</span>
+                        <input type="email" id="emailInput" placeholder="Enter your @neu.edu.ph email" class="email-input">
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="input-wrapper">
+                        <span class="input-icon">🔒</span>
+                        <input type="password" id="passwordInput" placeholder="Enter password" class="email-input password-input">
+                        <button type="button" id="togglePassword" class="password-toggle">
+                            <span class="eye-icon">👁️</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Login Button -->
+                    <button id="loginBtn" class="primary-login-btn">
+                        <span>Login</span>
+                    </button>
+                </div>
+                
+                <!-- Create Account -->
+                <div class="create-account-section">
+                    <p class="divider-text">Don't have an account?</p>
+                    <button id="createAccountBtn" class="create-account-btn">
+                        Create an Account
+                    </button>
+                </div>
+                
+                <!-- Status -->
+                <p id="statusMessage" class="status-message"></p>
+            </div>
+            
+            <!-- Footer -->
+            <div class="footer">
+                <p>© 2026 New Era University. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+        <!-- Firebase Compat SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="firebase.js"></script>
+    <script src="loginpage.js"></script>
+</body>
+</html>

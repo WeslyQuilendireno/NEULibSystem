@@ -12,7 +12,7 @@ body {
     background: #F1F5F9;
 }
 
-/* ─── HEADER ────────────────────────────────── */
+/*  HEADER  */
 .page-header {
     background: #F8FAFC;
     border-bottom: 1px solid #E2E8F0;
@@ -64,7 +64,7 @@ body {
     text-transform: uppercase;
 }
 
-/* ─── PROFILE ───────────────────────────────── */
+/* PROFILE  */
 .header-profile {
     position: relative;
     display: flex;
@@ -110,7 +110,7 @@ body {
     box-shadow: 0 2px 8px rgba(13,148,136,0.3);
 }
 
-/* ─── DROPDOWN ──────────────────────────────── */
+/*  DROPDOWN  */
 .profile-dropdown {
     display: none;
     position: absolute;
@@ -190,7 +190,7 @@ body {
 
 .dropdown-item:hover { background: rgba(239,68,68,0.08); }
 
-/* ─── MAIN ──────────────────────────────────── */
+/*  MAIN */
 .page-main {
     flex: 1;
     max-width: 1200px;
@@ -199,7 +199,7 @@ body {
     padding: 32px 24px;
 }
 
-/* ─── STAT CARDS ────────────────────────────── */
+/* ─── STAT CARDS */
 .stats-row {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -248,7 +248,7 @@ body {
     line-height: 1.3;
 }
 
-/* ─── TABLE CARD ────────────────────────────── */
+/*  TABLE CARD */
 .table-card {
     background: white;
     border-radius: 20px;
@@ -364,7 +364,7 @@ body {
     border-color: #EF4444;
 }
 
-/* ─── TABLE ─────────────────────────────────── */
+/*  TABLE */
 .table-scroll {
     overflow-x: auto;
 }
@@ -470,7 +470,7 @@ body {
     white-space: nowrap;
 }
 
-/* ─── EMPTY STATE ───────────────────────────── */
+/* EMPTY STATE  */
 .empty-state {
     display: none;
     flex-direction: column;
@@ -503,7 +503,7 @@ body {
     line-height: 1.5;
 }
 
-/* ─── FOOTER ────────────────────────────────── */
+/* FOOTER */
 .page-footer {
     background: linear-gradient(135deg, #0D9488 0%, #3B82F6 100%);
     padding: 20px 40px;
@@ -546,7 +546,7 @@ body {
     margin-top: 3px;
 }
 
-/* ─── RESPONSIVE ────────────────────────────── */
+/* RESPONSIVE  */
 @media (max-width: 900px) {
     .stats-row { grid-template-columns: repeat(3, 1fr); }
 }
@@ -561,11 +561,11 @@ body {
     .page-footer-inner { flex-direction: column; gap: 12px; text-align: center; }
     .footer-copy p { text-align: center; }
 }
-/* ─── SWITCH TO VISITOR BUTTON ──────────────── */
+/* SWITCH TO VISITOR BUTTON  */
 .dropdown-item.switch-btn { color: #0D9488; }
 .dropdown-item.switch-btn:hover { background: rgba(13,148,136,0.08); }
 
-/* ─── PAGINATION ────────────────────────────── */
+/* PAGINATION */
 .pagination-bar {
     display: flex;
     align-items: center;
@@ -590,13 +590,13 @@ body {
 .page-btn:hover:not(:disabled) { border-color: #0D9488; color: #0D9488; background: rgba(13,148,136,0.05); }
 .page-btn:disabled { color: #D1D5DB; border-color: #F3F4F6; cursor: not-allowed; background: #FAFAFA; }
 
-/* ─── TABLE SCROLL (horizontal) ─────────────── */
+/*  TABLE SCROLL (horizontal)  */
 .table-scroll {
     overflow-x: auto;
     overflow-y: visible;
 }
 
-/* ─── MULTI-PURPOSE CELL ────────────────────── */
+/*  MULTI-PURPOSE CELL  */
 .purpose-cell { display: flex; flex-wrap: wrap; gap: 4px; max-width: 200px; }
 .badge-short {
     max-width: 110px;
@@ -612,7 +612,7 @@ body {
 .badge-emoji.badge-computer   { border-color: #2563EB; }
 .badge-emoji.badge-assignment { border-color: #D97706; }
 
-/* ─── SCROLL TO TOP BUTTON ──────────────────── */
+/*  SCROLL TO TOP BUTTON  */
 .scroll-top-btn {
     position: fixed;
     bottom: 32px;

@@ -8,16 +8,16 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(function (doc) {
                 var user;
                 if (doc.exists) {
-                    var d    = doc.data();
-                    var parts    = (d.fullName || '').split(/[\s,]+/).filter(Boolean);
+                    var d = doc.data();
+                    var parts = (d.fullName || '').split(/[\s,]+/).filter(Boolean);
                     var initials = parts.map(function (p) { return p[0].toUpperCase(); }).slice(0, 2).join('') || 'U';
                     user = {
-                        fullName:   d.fullName   || 'Visitor',
-                        college:    d.college    || '—',
-                        program:    d.program    || '',
-                        role:       d.role       || 'Student',
-                        email:      d.email      || firebaseUser.email,
-                        initials:   initials,
+                        fullName: d.fullName || 'Visitor',
+                        college: d.college || '—',
+                        program: d.program || '',
+                        role: d.role || 'Student',
+                        email: d.email || firebaseUser.email,
+                        initials: initials,
                         shortLabel: d.shortLabel || d.department || '—'
                     };
                 } else {
@@ -35,20 +35,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function populatePage(user, uid) {
 
-        // ── HEADER ────────────────────────────────────────────────
-        document.getElementById('headerName').textContent    = user.fullName;
+        //  HEADER 
+        document.getElementById('headerName').textContent = user.fullName;
         document.getElementById('headerCollege').textContent = user.shortLabel;
-        document.getElementById('headerAvatar').textContent  = user.initials;
-        document.getElementById('dropAvatar').textContent    = user.initials;
-        document.getElementById('dropName').textContent      = user.fullName;
-        document.getElementById('dropEmail').textContent     = user.email;
+        document.getElementById('headerAvatar').textContent = user.initials;
+        document.getElementById('dropAvatar').textContent = user.initials;
+        document.getElementById('dropName').textContent = user.fullName;
+        document.getElementById('dropEmail').textContent = user.email;
 
-        // ── WELCOME BANNER & INFO STRIP ───────────────────────────
+        //  WELCOME BANNER & INFO STRIP 
         document.getElementById('bannerAvatar').textContent = user.initials;
-        document.getElementById('bannerName').textContent   = user.fullName;
-        document.getElementById('infoCollege').textContent  = user.college;
-        document.getElementById('infoProgram').textContent  = user.program;
-        document.getElementById('infoRole').textContent     = user.role;
+        document.getElementById('bannerName').textContent = user.fullName;
+        document.getElementById('infoCollege').textContent = user.college;
+        document.getElementById('infoProgram').textContent = user.program;
+        document.getElementById('infoRole').textContent = user.role;
 
         if (user.role === 'Faculty' || user.role === 'Employee') {
             var pi = document.getElementById('programInfoItem');
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (pd) pd.style.display = 'none';
         }
 
-        // ── LIVE CLOCK ────────────────────────────────────────────
+        //  LIVE CLOCK 
         function updateClock() {
             document.getElementById('bannerTime').textContent =
                 new Date().toLocaleString('en-PH', {
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
         updateClock();
         setInterval(updateClock, 1000);
 
-        // ── PROFILE DROPDOWN ──────────────────────────────────────
+        //  PROFILE DROPDOWN 
         var headerProfile   = document.getElementById('headerProfile');
         var profileDropdown = document.getElementById('profileDropdown');
         headerProfile.addEventListener('click', function (e) {
@@ -79,12 +79,12 @@ document.addEventListener('DOMContentLoaded', function () {
             profileDropdown.classList.remove('open');
         });
 
-        // ── MULTI-SELECT PURPOSE ──────────────────────────────────
+        //  MULTI-SELECT PURPOSE 
         var selectedPurposes = [];  // can hold 1–4 purposes
-        var purposeCards     = document.querySelectorAll('.purpose-card');
-        var logBtn           = document.getElementById('logVisitBtn');
-        var logBtnText       = document.getElementById('logBtnText');
-        var statusMsg        = document.getElementById('statusMsg');
+        var purposeCards = document.querySelectorAll('.purpose-card');
+        var logBtn = document.getElementById('logVisitBtn');
+        var logBtnText = document.getElementById('logBtnText');
+        var statusMsg = document.getElementById('statusMsg');
 
         purposeCards.forEach(function (card) {
             card.addEventListener('click', function () {
@@ -102,31 +102,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 statusMsg.textContent = '';
-                statusMsg.className   = 'status-msg';
+                statusMsg.className = 'status-msg';
 
                 if (selectedPurposes.length === 0) {
-                    logBtn.disabled        = true;
+                    logBtn.disabled = true;
                     logBtnText.textContent = 'Select a Purpose to Log Visit';
                 } else if (selectedPurposes.length === 1) {
-                    logBtn.disabled        = false;
+                    logBtn.disabled = false;
                     logBtnText.textContent = 'Log Visit – ' + selectedPurposes[0];
                 } else {
-                    logBtn.disabled        = false;
+                    logBtn.disabled = false;
                     logBtnText.textContent = 'Log Visit – ' + selectedPurposes.length + ' purposes selected';
                 }
             });
         });
 
-        // ── LOG VISIT → FIRESTORE ─────────────────────────────────
+        //  LOG VISIT → FIRESTORE 
         logBtn.addEventListener('click', function () {
             if (selectedPurposes.length === 0) return;
 
-            logBtn.disabled        = true;
+            logBtn.disabled = true;
             logBtnText.textContent = '⏳ Logging visit…';
             statusMsg.textContent  = '';
-            statusMsg.className    = 'status-msg';
+            statusMsg.className = 'status-msg';
 
-            var now     = new Date();
+            var now = new Date();
             var display = now.toLocaleString('en-PH', {
                 year: 'numeric', month: 'short', day: 'numeric',
                 hour: '2-digit', minute: '2-digit', hour12: true
@@ -150,20 +150,20 @@ document.addEventListener('DOMContentLoaded', function () {
                         ? selectedPurposes[0]
                         : selectedPurposes.length + ' purposes';
                     statusMsg.textContent = '✅ Visit logged! Purpose: ' + label + ' — ' + display;
-                    statusMsg.className   = 'status-msg success';
+                    statusMsg.className = 'status-msg success';
                     logBtnText.textContent = '✅ Visit Logged!';
 
                     setTimeout(function () {
                         purposeCards.forEach(function (c) { c.classList.remove('selected'); });
-                        selectedPurposes       = [];
-                        logBtn.disabled        = true;
+                        selectedPurposes = [];
+                        logBtn.disabled = true;
                         logBtnText.textContent = 'Select a Purpose to Log Visit';
-                        statusMsg.textContent  = '';
-                        statusMsg.className    = 'status-msg';
+                        statusMsg.textContent = '';
+                        statusMsg.className = 'status-msg';
                     }, 4000);
                 })
                 .catch(function (err) {
-                    logBtn.disabled        = false;
+                    logBtn.disabled = false;
                     logBtnText.textContent = selectedPurposes.length === 1
                         ? 'Log Visit – ' + selectedPurposes[0]
                         : 'Log Visit – ' + selectedPurposes.length + ' purposes selected';
@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
         });
 
-        // ── SIGN OUT ──────────────────────────────────────────────
+        //  SIGN OUT 
         document.getElementById('signOutBtn').addEventListener('click', function () {
             auth.signOut().then(function () { window.location.href = 'index.html'; });
         });

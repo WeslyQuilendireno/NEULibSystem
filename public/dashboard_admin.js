@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     auth.onAuthStateChanged(function (firebaseUser) {
         if (!firebaseUser) { window.location.href = 'index.html'; return; }
 
-        var userEmail     = (firebaseUser.email || '').toLowerCase().trim();
+        var userEmail = (firebaseUser.email || '').toLowerCase().trim();
         var isWhitelisted = ADMIN_EMAILS.indexOf(userEmail) !== -1;
 
         db.collection('users').doc(firebaseUser.uid).get()
@@ -23,28 +23,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (doc.exists) {
                     var d = doc.data();
                     fullName = d.fullName || firebaseUser.email;
-                    email    = d.email    || firebaseUser.email;
+                    email = d.email || firebaseUser.email;
                     var parts = fullName.split(/[\s,]+/).filter(Boolean);
-                    initials  = parts.map(function (p) { return p[0].toUpperCase(); }).slice(0, 2).join('') || 'AU';
+                    initials = parts.map(function (p) { return p[0].toUpperCase(); }).slice(0, 2).join('') || 'AU';
                 } else {
                     fullName = firebaseUser.email;
-                    email    = firebaseUser.email;
+                    email = firebaseUser.email;
                     initials = 'AU';
                 }
-                document.getElementById('headerName').textContent   = fullName;
+                document.getElementById('headerName').textContent = fullName;
                 document.getElementById('headerAvatar').textContent = initials;
-                document.getElementById('dropAvatar').textContent   = initials;
-                document.getElementById('dropName').textContent     = fullName;
-                document.getElementById('dropEmail').textContent    = email;
+                document.getElementById('dropAvatar').textContent = initials;
+                document.getElementById('dropName').textContent = fullName;
+                document.getElementById('dropEmail').textContent = email;
                 initDashboard();
             })
             .catch(function () {
                 if (isWhitelisted) {
-                    document.getElementById('headerName').textContent   = firebaseUser.email;
+                    document.getElementById('headerName').textContent = firebaseUser.email;
                     document.getElementById('headerAvatar').textContent = 'AU';
-                    document.getElementById('dropAvatar').textContent   = 'AU';
-                    document.getElementById('dropName').textContent     = firebaseUser.email;
-                    document.getElementById('dropEmail').textContent    = firebaseUser.email;
+                    document.getElementById('dropAvatar').textContent = 'AU';
+                    document.getElementById('dropName').textContent = firebaseUser.email;
+                    document.getElementById('dropEmail').textContent = firebaseUser.email;
                     initDashboard();
                 } else {
                     window.location.href = 'index.html';
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function initDashboard() {
 
-        // ── PROFILE DROPDOWN ──────────────────────────────────────
+        //  PROFILE DROPDOWN 
         var headerProfile   = document.getElementById('headerProfile');
         var profileDropdown = document.getElementById('profileDropdown');
         headerProfile.addEventListener('click', function (e) {
@@ -70,13 +70,13 @@ document.addEventListener('DOMContentLoaded', function () {
             window.location.href = 'dashboard_visitor.html';
         });
 
-        // ── SCROLL TO TOP ─────────────────────────────────────────
+        //  SCROLL TO TOP 
         var scrollBtn = document.getElementById('scrollTopBtn');
         scrollBtn.addEventListener('click', function () {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // ── PURPOSE CONFIG ────────────────────────────────────────
+        //  PURPOSE CONFIG 
         var purposeConfig = {
             'Reading Books':     { icon: '📖', cls: 'badge-reading',    short: 'Reading…'     },
             'Research / Thesis': { icon: '🔬', cls: 'badge-research',   short: 'Research…'    },
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         }
 
-        // ── BUILD PURPOSE CELL ────────────────────────────────────
+        //  BUILD PURPOSE CELL 
         function buildPurposeCell(log) {
             var purposes = log.purposes && log.purposes.length
                 ? log.purposes
@@ -118,15 +118,15 @@ document.addEventListener('DOMContentLoaded', function () {
             return html;
         }
 
-        // ── PAGINATION ────────────────────────────────────────────
-        var PAGE_SIZE    = 10;
-        var currentPage  = 1;
+        //  PAGINATION 
+        var PAGE_SIZE = 10;
+        var currentPage = 1;
         var filteredLogs = [];
 
         function renderTable(logs) {
-            var tbody      = document.getElementById('logTableBody');
+            var tbody = document.getElementById('logTableBody');
             var emptyState = document.getElementById('emptyState');
-            var pagBar     = document.getElementById('paginationBar');
+            var pagBar = document.getElementById('paginationBar');
             tbody.innerHTML = '';
 
             if (logs.length === 0) {
@@ -139,11 +139,11 @@ document.addEventListener('DOMContentLoaded', function () {
             var totalPages = Math.ceil(logs.length / PAGE_SIZE);
             if (currentPage > totalPages) currentPage = totalPages;
             var start = (currentPage - 1) * PAGE_SIZE;
-            var end   = Math.min(start + PAGE_SIZE, logs.length);
+            var end = Math.min(start + PAGE_SIZE, logs.length);
 
             logs.slice(start, end).forEach(function (log, i) {
-                var roleCls     = roleConfig[log.role] || '';
-                var isStudent   = (log.role === 'Student');
+                var roleCls = roleConfig[log.role] || '';
+                var isStudent = (log.role === 'Student');
                 var programCell = isStudent
                     ? '<span class="program-cell">' + esc(log.program || '—') + '</span>'
                     : '<span class="no-program">—</span>';
@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (currentPage < Math.ceil(filteredLogs.length / PAGE_SIZE)) { currentPage++; renderTable(filteredLogs); }
         });
 
-        // ── STATS ─────────────────────────────────────────────────
+        //  STATS 
         function updateStats(logs) {
             var today = new Date().toDateString();
             var todayLogs = logs.filter(function (l) {
@@ -192,14 +192,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     return ps.indexOf(label) !== -1;
                 }).length;
             }
-            document.getElementById('statTotal').textContent      = todayLogs.length;
-            document.getElementById('statReading').textContent    = countPurpose('Reading Books');
-            document.getElementById('statResearch').textContent   = countPurpose('Research / Thesis');
-            document.getElementById('statComputer').textContent   = countPurpose('Use of Computer');
+            document.getElementById('statTotal').textContent = todayLogs.length;
+            document.getElementById('statReading').textContent = countPurpose('Reading Books');
+            document.getElementById('statResearch').textContent = countPurpose('Research / Thesis');
+            document.getElementById('statComputer').textContent = countPurpose('Use of Computer');
             document.getElementById('statAssignment').textContent = countPurpose('Doing Assignments');
         }
 
-        // ── SEARCH / FILTER ───────────────────────────────────────
+        //  SEARCH / FILTER 
         function nameMatches(fullName, search) {
             if (!search) return true;
             var name = (fullName || '').toLowerCase();
@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var allLogs = [];
         function applyFilters() {
-            var search  = document.getElementById('searchInput').value.trim().toLowerCase();
+            var search = document.getElementById('searchInput').value.trim().toLowerCase();
             var purpose = document.getElementById('filterPurpose').value;
 
             filteredLogs = allLogs.filter(function (log) {
@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('searchInput').addEventListener('input', applyFilters);
         document.getElementById('filterPurpose').addEventListener('change', applyFilters);
 
-        // ── FIRESTORE LISTENER ────────────────────────────────────
+        //  FIRESTORE LISTENER 
         db.collection('visitor_logs')
             .orderBy('timestamp', 'desc')
             .onSnapshot(function (snapshot) {
@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 applyFilters();
             }, function (err) { console.error('Firestore error:', err); });
 
-        // ── CLEAR LOGS ────────────────────────────────────────────
+        //  CLEAR LOGS 
         document.getElementById('clearLogsBtn').addEventListener('click', function () {
             if (!confirm('Clear ALL visitor logs? This cannot be undone.')) return;
             db.collection('visitor_logs').get()

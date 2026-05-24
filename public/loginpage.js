@@ -1,23 +1,23 @@
 // NEU Library – Login Page Logic (Firebase Compat SDK)
 document.addEventListener('DOMContentLoaded', function () {
 
-    var toggleBtns        = document.querySelectorAll('.toggle-btn');
-    var toggleSlider      = document.querySelector('.toggle-slider');
-    var roleToggle        = document.getElementById('roleToggle');
-    var formTitle         = document.getElementById('formTitle');
-    var formSubtitle      = document.getElementById('formSubtitle');
-    var googleBtnText     = document.getElementById('googleBtnText');
-    var statusMsg         = document.getElementById('statusMessage');
-    var googleBtn         = document.getElementById('googleLoginBtn');
-    var emailInput        = document.getElementById('emailInput');
-    var passwordInput     = document.getElementById('passwordInput');
-    var loginBtn          = document.getElementById('loginBtn');
+    var toggleBtns = document.querySelectorAll('.toggle-btn');
+    var toggleSlider = document.querySelector('.toggle-slider');
+    var roleToggle = document.getElementById('roleToggle');
+    var formTitle = document.getElementById('formTitle');
+    var formSubtitle = document.getElementById('formSubtitle');
+    var googleBtnText = document.getElementById('googleBtnText');
+    var statusMsg = document.getElementById('statusMessage');
+    var googleBtn = document.getElementById('googleLoginBtn');
+    var emailInput = document.getElementById('emailInput');
+    var passwordInput = document.getElementById('passwordInput');
+    var loginBtn = document.getElementById('loginBtn');
     var togglePasswordBtn = document.getElementById('togglePassword');
-    var createAccountBtn  = document.getElementById('createAccountBtn');
+    var createAccountBtn = document.getElementById('createAccountBtn');
 
     var currentMode = 'visitor';
 
-    // ── ADMIN WHITELIST ───────────────────────────────────────────
+    //  ADMIN WHITELIST 
     var ADMIN_EMAILS = [
         'wesly.quilendireno@neu.edu.ph',
         'jcesperanza@neu.edu.ph'
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return ADMIN_EMAILS.indexOf((email || '').toLowerCase().trim()) !== -1;
     }
 
-    // ── ROLE TOGGLE ───────────────────────────────────────────────
+    //  ROLE TOGGLE 
     toggleBtns.forEach(function (btn) {
         btn.addEventListener('click', function () {
             var newMode = btn.dataset.role;
@@ -55,28 +55,28 @@ document.addEventListener('DOMContentLoaded', function () {
             admin:   { title: 'Admin Login',       subtitle: 'Access visitor statistics',       google: 'Admin Sign in',        ph: 'Enter admin @neu.edu.ph email' }
         };
         var c = content[mode];
-        formTitle.textContent     = c.title;
-        formSubtitle.textContent  = c.subtitle;
+        formTitle.textContent = c.title;
+        formSubtitle.textContent = c.subtitle;
         googleBtnText.textContent = c.google;
-        emailInput.placeholder    = c.ph;
-        statusMsg.textContent     = '';
-        statusMsg.className       = 'status-message';
+        emailInput.placeholder = c.ph;
+        statusMsg.textContent = '';
+        statusMsg.className = 'status-message';
     }
 
-    // ── PASSWORD TOGGLE ───────────────────────────────────────────
+    //  PASSWORD TOGGLE 
     togglePasswordBtn.addEventListener('click', function () {
         var isPass = passwordInput.type === 'password';
         passwordInput.type = isPass ? 'text' : 'password';
         togglePasswordBtn.querySelector('.eye-icon').textContent = isPass ? '🙈' : '👁️';
     });
 
-    // ── STATUS HELPER ─────────────────────────────────────────────
+    //  STATUS HELPER 
     function setStatus(msg, type) {
         statusMsg.textContent = msg;
-        statusMsg.className   = 'status-message status-' + type;
+        statusMsg.className = 'status-message status-' + type;
     }
 
-    // ── REDIRECT LOGIC ────────────────────────────────────────────
+    //  REDIRECT LOGIC 
     function handleRedirect(email) {
         if (currentMode === 'visitor') {
             window.location.href = 'dashboard_visitor.html';
@@ -90,9 +90,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // ── EMAIL + PASSWORD LOGIN ────────────────────────────────────
+    //  EMAIL + PASSWORD LOGIN 
     loginBtn.addEventListener('click', function () {
-        var email    = emailInput.value.trim();
+        var email = emailInput.value.trim();
         var password = passwordInput.value;
 
         if (!email)    { setStatus('❌ Please enter your email address.', 'error'); return; }
@@ -107,16 +107,16 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .catch(function (err) {
                 var msg = '❌ Login failed.';
-                if (err.code === 'auth/user-not-found')     msg = '❌ No account found with this email.';
-                if (err.code === 'auth/wrong-password')     msg = '❌ Incorrect password.';
+                if (err.code === 'auth/user-not-found') msg = '❌ No account found with this email.';
+                if (err.code === 'auth/wrong-password') msg = '❌ Incorrect password.';
                 if (err.code === 'auth/invalid-credential') msg = '❌ Wrong email or password.';
-                if (err.code === 'auth/invalid-email')      msg = '❌ Invalid email address.';
-                if (err.code === 'auth/too-many-requests')  msg = '❌ Too many attempts. Try again later.';
+                if (err.code === 'auth/invalid-email') msg = '❌ Invalid email address.';
+                if (err.code === 'auth/too-many-requests') msg = '❌ Too many attempts. Try again later.';
                 setStatus(msg, 'error');
             });
     });
 
-    // ── GOOGLE SIGN-IN ────────────────────────────────────────────
+    //  GOOGLE SIGN-IN 
     googleBtn.addEventListener('click', async function () {
         try {
             setStatus('🔄 Signing in with Google…', 'loading');
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // ── CREATE ACCOUNT ────────────────────────────────────────────
+    //  CREATE ACCOUNT 
     createAccountBtn.addEventListener('click', function () {
         window.location.href = 'register.html';
     });

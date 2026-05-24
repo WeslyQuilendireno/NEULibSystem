@@ -15,7 +15,7 @@ body {
     overflow-y: auto;
 }
 
-/* ── HERO BACKGROUND IMAGE ── */
+/*  HERO BACKGROUND IMAGE  */
 body::before {
     content: '';
     position: fixed;

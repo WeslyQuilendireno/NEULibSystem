@@ -2,50 +2,50 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     var programs = {
-        sgs:   [{ value: 'sgs_grad',  label: 'Graduate Studies' }],
-        coa:   [{ value: 'bsa',       label: 'BSA - Bachelor of Science in Accountancy' },
-                { value: 'bsais',     label: 'BSAIS - BS Accounting Information System' }],
-        cag:   [{ value: 'bsag',      label: 'BSAg - Bachelor of Science in Agriculture' }],
-        cas:   [{ value: 'ba_eco',    label: 'BAEcon - Bachelor of Arts in Economics' },
+        sgs:   [{ value: 'sgs_grad', label: 'Graduate Studies' }],
+        coa:   [{ value: 'bsa', label: 'BSA - Bachelor of Science in Accountancy' },
+                { value: 'bsais', label: 'BSAIS - BS Accounting Information System' }],
+        cag:   [{ value: 'bsag', label: 'BSAg - Bachelor of Science in Agriculture' }],
+        cas:   [{ value: 'ba_eco', label: 'BAEcon - Bachelor of Arts in Economics' },
                 { value: 'ba_polsci', label: 'BAPolSci - Bachelor of Arts in Political Science' },
-                { value: 'bs_bio',    label: 'BSBio - Bachelor of Science in Biology' },
-                { value: 'bs_psych',  label: 'BSPsych - Bachelor of Science in Psychology' },
-                { value: 'bpa',       label: 'BPA - Bachelor of Public Administration' }],
-        cba:   [{ value: 'bsba_fm',   label: 'BSBA-FM - Major in Financial Management' },
+                { value: 'bs_bio', label: 'BSBio - Bachelor of Science in Biology' },
+                { value: 'bs_psych', label: 'BSPsych - Bachelor of Science in Psychology' },
+                { value: 'bpa', label: 'BPA - Bachelor of Public Administration' }],
+        cba:   [{ value: 'bsba_fm', label: 'BSBA-FM - Major in Financial Management' },
                 { value: 'bsba_hrdm', label: 'BSBA-HRDM - Major in HR Dev. and Management' },
-                { value: 'bsba_lm',   label: 'BSBA-LM - Major in Legal Management' },
-                { value: 'bsba_mm',   label: 'BSBA-MM - Major in Marketing Management' },
-                { value: 'bs_entre',  label: 'BSEntre - BS Entrepreneurship' },
-                { value: 'bsrem',     label: 'BSREM - BS Real Estate Management' }],
-        ccom:  [{ value: 'ba_comm',   label: 'BAComm - Bachelor of Arts in Communication' },
-                { value: 'ba_broad',  label: 'BABroad - Bachelor of Arts in Broadcasting' },
-                { value: 'ba_journ',  label: 'BAJourn - Bachelor of Arts in Journalism' }],
-        cics:  [{ value: 'blis',      label: 'BLIS - Bachelor of Library and Information Science' },
-                { value: 'bscs',      label: 'BSCS - Bachelor of Science in Computer Science' },
-                { value: 'bsemc_da',  label: 'BSEMC-DAT - BS EMC in Digital Animation Technology' },
-                { value: 'bsemc_gd',  label: 'BSEMC-GD - BS EMC in Game Development' },
-                { value: 'bsit',      label: 'BSIT - Bachelor of Science in Information Technology' },
-                { value: 'bsis',      label: 'BSIS - Bachelor of Science in Information System' }],
-        ccrim: [{ value: 'bscrim',    label: 'BSCrim - Bachelor of Science in Criminology' }],
-        ced:   [{ value: 'beed',      label: 'BEED - Bachelor of Elementary Education' },
+                { value: 'bsba_lm', label: 'BSBA-LM - Major in Legal Management' },
+                { value: 'bsba_mm', label: 'BSBA-MM - Major in Marketing Management' },
+                { value: 'bs_entre', label: 'BSEntre - BS Entrepreneurship' },
+                { value: 'bsrem', label: 'BSREM - BS Real Estate Management' }],
+        ccom:  [{ value: 'ba_comm', label: 'BAComm - Bachelor of Arts in Communication' },
+                { value: 'ba_broad', label: 'BABroad - Bachelor of Arts in Broadcasting' },
+                { value: 'ba_journ', label: 'BAJourn - Bachelor of Arts in Journalism' }],
+        cics:  [{ value: 'blis', label: 'BLIS - Bachelor of Library and Information Science' },
+                { value: 'bscs', label: 'BSCS - Bachelor of Science in Computer Science' },
+                { value: 'bsemc_da', label: 'BSEMC-DAT - BS EMC in Digital Animation Technology' },
+                { value: 'bsemc_gd', label: 'BSEMC-GD - BS EMC in Game Development' },
+                { value: 'bsit', label: 'BSIT - Bachelor of Science in Information Technology' },
+                { value: 'bsis', label: 'BSIS - Bachelor of Science in Information System' }],
+        ccrim: [{ value: 'bscrim', label: 'BSCrim - Bachelor of Science in Criminology' }],
+        ced:   [{ value: 'beed', label: 'BEED - Bachelor of Elementary Education' },
                 { value: 'beed_eced', label: 'BEED-ECED - Specialization in Early Childhood Ed.' },
                 { value: 'beed_sned', label: 'BEED-SNED - Specialization in Special Education' },
-                { value: 'bse_eng',   label: 'BSE-Eng - Major in English' },
-                { value: 'bse_fil',   label: 'BSE-Fil - Major in Filipino' },
-                { value: 'bse_math',  label: 'BSE-Math - Major in Mathematics' },
-                { value: 'bse_ss',    label: 'BSE-SS - Major in Social Studies' },
-                { value: 'bse_sci',   label: 'BSE-Sci - Major in Science' },
-                { value: 'bse_mape',  label: 'BSE-MAPE - Major in MAPE' },
-                { value: 'bse_tle',   label: 'BSE-TLE - Major in Technology and Livelihood Ed.' }],
-        cea:   [{ value: 'bsce',      label: 'BSCE - Bachelor of Science in Civil Engineering' },
-                { value: 'bsece',     label: 'BSECE - BS Electronics Engineering' },
-                { value: 'bsee',      label: 'BSEE - BS Electrical Engineering' },
-                { value: 'bsie',      label: 'BSIE - BS Industrial Engineering' },
-                { value: 'bsme',      label: 'BSME - BS Mechanical Engineering' },
-                { value: 'bsarch',    label: 'BSArch - Bachelor of Science in Architecture' },
-                { value: 'bsastro',   label: 'BSAstro - Bachelor of Science in Astronomy' }],
-        cmt:   [{ value: 'bsmt',      label: 'BSMT - Bachelor of Science in Medical Technology' }],
-        con:   [{ value: 'bsn',       label: 'BSN - Bachelor of Science in Nursing' }]
+                { value: 'bse_eng', label: 'BSE-Eng - Major in English' },
+                { value: 'bse_fil', label: 'BSE-Fil - Major in Filipino' },
+                { value: 'bse_math', label: 'BSE-Math - Major in Mathematics' },
+                { value: 'bse_ss', label: 'BSE-SS - Major in Social Studies' },
+                { value: 'bse_sci', label: 'BSE-Sci - Major in Science' },
+                { value: 'bse_mape', label: 'BSE-MAPE - Major in MAPE' },
+                { value: 'bse_tle', label: 'BSE-TLE - Major in Technology and Livelihood Ed.' }],
+        cea:   [{ value: 'bsce', label: 'BSCE - Bachelor of Science in Civil Engineering' },
+                { value: 'bsece', label: 'BSECE - BS Electronics Engineering' },
+                { value: 'bsee', label: 'BSEE - BS Electrical Engineering' },
+                { value: 'bsie', label: 'BSIE - BS Industrial Engineering' },
+                { value: 'bsme', label: 'BSME - BS Mechanical Engineering' },
+                { value: 'bsarch', label: 'BSArch - Bachelor of Science in Architecture' },
+                { value: 'bsastro', label: 'BSAstro - Bachelor of Science in Astronomy' }],
+        cmt:   [{ value: 'bsmt', label: 'BSMT - Bachelor of Science in Medical Technology' }],
+        con:   [{ value: 'bsn', label: 'BSN - Bachelor of Science in Nursing' }]
     };
 
     var deptNames = {
@@ -58,14 +58,14 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     var departmentSelect = document.getElementById('departmentSelect');
-    var courseSelect     = document.getElementById('courseSelect');
-    var togglePwd        = document.getElementById('togglePwd');
-    var passwordField    = document.getElementById('passwordField');
-    var eyeIcon          = document.getElementById('eyeIcon');
-    var registerForm     = document.getElementById('registerForm');
-    var formStatus       = document.getElementById('formStatus');
+    var courseSelect = document.getElementById('courseSelect');
+    var togglePwd = document.getElementById('togglePwd');
+    var passwordField = document.getElementById('passwordField');
+    var eyeIcon = document.getElementById('eyeIcon');
+    var registerForm = document.getElementById('registerForm');
+    var formStatus = document.getElementById('formStatus');
 
-    // ── GOOGLE PRE-FILL ───────────────────────────────────────────
+    //  GOOGLE PRE-FILL 
     var isGoogleUser  = false;
     var googleUid     = null;
     var googleData    = sessionStorage.getItem('google_prefill');
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Show welcome notice
             if (formStatus) {
                 formStatus.textContent = '👋 Welcome! Your Google account was detected. Please complete your profile below.';
-                formStatus.className   = 'form-status success';
+                formStatus.className = 'form-status success';
             }
             sessionStorage.removeItem('google_prefill');
         } catch (e) {
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // ── DEPARTMENT → COURSE ───────────────────────────────────────
+    //  DEPARTMENT → COURSE 
     departmentSelect.addEventListener('change', function () {
         var dept = this.value;
         courseSelect.innerHTML = '';
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
         courseSelect.disabled = false;
     });
 
-    // ── ROLE → CONDITIONAL FIELDS ─────────────────────────────────
+    //  ROLE → CONDITIONAL FIELDS 
     document.getElementById('roleSelect').addEventListener('change', function () {
         var role     = this.value;
         var yearGroup  = document.getElementById('yearLevelGroup');
@@ -148,14 +148,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // ── PASSWORD TOGGLE ───────────────────────────────────────────
+    //  PASSWORD TOGGLE 
     togglePwd.addEventListener('click', function () {
         var isH = passwordField.type === 'password';
         passwordField.type  = isH ? 'text' : 'password';
         eyeIcon.textContent = isH ? '🙈' : '👁️';
     });
 
-    // ── LIVE ERROR CLEAR ──────────────────────────────────────────
+    //  LIVE ERROR CLEAR 
     ['fullName','idNumber','emailAddress','passwordField'].forEach(function (id) {
         var el = document.getElementById(id); if (!el) return;
         el.addEventListener('input', function () {
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (i) i.classList.remove('is-error'); if (e) e.textContent = '';
     }
 
-    // ── FORM SUBMIT ───────────────────────────────────────────────
+    //  FORM SUBMIT 
     registerForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -184,15 +184,15 @@ document.addEventListener('DOMContentLoaded', function () {
         clearError('emailAddress','emailError'); clearError('passwordField','passwordError');
         formStatus.textContent = ''; formStatus.className = 'form-status';
 
-        var fullName   = document.getElementById('fullName').value.trim();
-        var idNumber   = document.getElementById('idNumber').value.trim();
-        var role       = document.getElementById('roleSelect').value;
-        var dept       = document.getElementById('departmentSelect').value;
-        var email      = document.getElementById('emailAddress').value.trim();
-        var password   = document.getElementById('passwordField').value;
-        var yearLevel  = document.getElementById('yearLevel') ? document.getElementById('yearLevel').value : 'na';
-        var position   = document.getElementById('positionInput') ? document.getElementById('positionInput').value.trim() : '';
-        var programVal   = courseSelect.value;
+        var fullName = document.getElementById('fullName').value.trim();
+        var idNumber = document.getElementById('idNumber').value.trim();
+        var role = document.getElementById('roleSelect').value;
+        var dept = document.getElementById('departmentSelect').value;
+        var email = document.getElementById('emailAddress').value.trim();
+        var password = document.getElementById('passwordField').value;
+        var yearLevel = document.getElementById('yearLevel') ? document.getElementById('yearLevel').value : 'na';
+        var position = document.getElementById('positionInput') ? document.getElementById('positionInput').value.trim() : '';
+        var programVal = courseSelect.value;
         var programLabel = courseSelect.options[courseSelect.selectedIndex] ? courseSelect.options[courseSelect.selectedIndex].text : '';
 
         var hasError = false;
@@ -212,21 +212,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (hasError) {
             formStatus.textContent = 'Please fill in all required fields correctly.';
-            formStatus.className   = 'form-status error';
+            formStatus.className = 'form-status error';
             return;
         }
 
         formStatus.textContent = '⏳ Saving your profile…';
-        formStatus.className   = 'form-status';
+        formStatus.className = 'form-status';
         document.getElementById('createAccountBtn').disabled = true;
 
-        var parts       = fullName.split(/[\s,]+/).filter(Boolean);
-        var initials    = parts.map(function (p) { return p[0].toUpperCase(); }).slice(0, 2).join('');
-        var roleCap     = role.charAt(0).toUpperCase() + role.slice(1);
+        var parts = fullName.split(/[\s,]+/).filter(Boolean);
+        var initials = parts.map(function (p) { return p[0].toUpperCase(); }).slice(0, 2).join('');
+        var roleCap = role.charAt(0).toUpperCase() + role.slice(1);
         var collegeName = deptNames[dept] || dept;
-        var shortLabel  = programVal ? dept.toUpperCase() + ' – ' + programVal.split('_')[0].toUpperCase() : dept.toUpperCase();
+        var shortLabel = programVal ? dept.toUpperCase() + ' – ' + programVal.split('_')[0].toUpperCase() : dept.toUpperCase();
 
-        // ── SAVE PROFILE TO FIRESTORE ─────────────────────────────
+        //  SAVE PROFILE TO FIRESTORE 
         function saveProfile(uid) {
             return db.collection('users').doc(uid).set({
                 uid:         uid,

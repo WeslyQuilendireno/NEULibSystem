@@ -66,15 +66,15 @@ document.addEventListener('DOMContentLoaded', function () {
     var formStatus = document.getElementById('formStatus');
 
     //  GOOGLE PRE-FILL 
-    var isGoogleUser  = false;
-    var googleUid     = null;
-    var googleData    = sessionStorage.getItem('google_prefill');
+    var isGoogleUser = false;
+    var googleUid = null;
+    var googleData = sessionStorage.getItem('google_prefill');
 
     if (googleData) {
         try {
             var gd = JSON.parse(googleData);
             isGoogleUser = true;
-            googleUid    = gd.uid;
+            googleUid = gd.uid;
 
             // Pre-fill name
             if (gd.fullName) {
@@ -85,10 +85,10 @@ document.addEventListener('DOMContentLoaded', function () {
             if (gd.email) {
                 var emEl = document.getElementById('emailAddress');
                 if (emEl) {
-                    emEl.value    = gd.email;
+                    emEl.value = gd.email;
                     emEl.readOnly = true;
                     emEl.style.background = '#F3F4F6';
-                    emEl.style.color      = '#6B7280';
+                    emEl.style.color = '#6B7280';
                     emEl.title = 'Email from your Google account';
                 }
             }
@@ -132,9 +132,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //  ROLE → CONDITIONAL FIELDS 
     document.getElementById('roleSelect').addEventListener('change', function () {
-        var role     = this.value;
-        var yearGroup  = document.getElementById('yearLevelGroup');
-        var posGroup   = document.getElementById('positionGroup');
+        var role = this.value;
+        var yearGroup = document.getElementById('yearLevelGroup');
+        var posGroup = document.getElementById('positionGroup');
         var courseGroup = document.getElementById('courseProgramGroup');
         this.classList.remove('is-error');
         var rErr = document.getElementById('roleError'); if (rErr) rErr.textContent = '';
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //  PASSWORD TOGGLE 
     togglePwd.addEventListener('click', function () {
         var isH = passwordField.type === 'password';
-        passwordField.type  = isH ? 'text' : 'password';
+        passwordField.type = isH ? 'text' : 'password';
         eyeIcon.textContent = isH ? '🙈' : '👁️';
     });
 

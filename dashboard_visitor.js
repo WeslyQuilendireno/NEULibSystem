@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setInterval(updateClock, 1000);
 
         //  PROFILE DROPDOWN 
-        var headerProfile   = document.getElementById('headerProfile');
+        var headerProfile = document.getElementById('headerProfile');
         var profileDropdown = document.getElementById('profileDropdown');
         headerProfile.addEventListener('click', function (e) {
             e.stopPropagation();
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
         purposeCards.forEach(function (card) {
             card.addEventListener('click', function () {
                 var purpose = card.dataset.purpose;
-                var idx     = selectedPurposes.indexOf(purpose);
+                var idx = selectedPurposes.indexOf(purpose);
 
                 if (idx === -1) {
                     // Add to selection

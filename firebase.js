@@ -2,7 +2,7 @@
 
 const firebaseConfig = {
     apiKey:            "AIzaSyDmlUa8g4TnUF6lfn79D0R_g9CFwQ18gxw",
-    authDomain:        "eulibarysys.firebaseapp.com",
+    authDomain:        "neulibarysys.firebaseapp.com",
     projectId:         "neulibarysys",
     storageBucket:     "neulibarysys.firebasestorage.app",
     messagingSenderId: "210328166811",
